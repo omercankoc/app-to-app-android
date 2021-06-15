@@ -1,6 +1,6 @@
 ## App to App Broadcast Receiver
 ## First Application
-Application that will receive the sent signal. 
+The application that listens to the sent signal. 
 ### Add permission for other app's access.
 ```xml
 <uses-permission android:name="application.permission"></uses-permission>
