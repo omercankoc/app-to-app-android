@@ -1,16 +1,11 @@
 ## App to App Broadcast Receiver
-### First Application
-
-Application that will receive the sent signal. First, let's add the necessary permissions to the manifest file.
-
-Add permission to access from other app.
-
+## First Application
+Application that will receive the sent signal. 
+### Add permission for other app's access.
 ```xml
 <uses-permission android:name="application.permission"></uses-permission>
 ```
-
-Add the receiver and configure it.
-
+### Add the receiver and configure it.
 ```xml
 <receiver
     android:name=".SignalBroadcast"
@@ -20,9 +15,7 @@ Add the receiver and configure it.
     </intent-filter>
 </receiver>
 ```
-
-Create the BroadcastReceiver class.
-
+### BroadcastReceiver class that listens for the incoming signal.
 ```kotlin
 class SignalBroadcast : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -30,3 +23,20 @@ class SignalBroadcast : BroadcastReceiver() {
     }
 }
 ```
+## Second App
+The application that sends the signal.
+### Add permissions to access other app.
+```xml
+<permission
+    android:name="application.permission"
+    android:protectionLevel="signature">
+</permission>
+```
+### Send signal to other application.
+```kotlin
+fun signal(view : View){
+    val intent : Intent = Intent("application.signal")
+    sendBroadcast(intent,"application.permission")
+}
+```
+
