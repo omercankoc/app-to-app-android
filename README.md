@@ -1,10 +1,13 @@
-## App to App Broadcast Receiver
+# App to App Broadcast Receiver
+
 ## First Application
 The application that listens to the sent signal. 
+
 ### Add permission for other app's access.
 ```xml
 <uses-permission android:name="application.permission"></uses-permission>
 ```
+
 ### Add the receiver and configure it.
 ```xml
 <receiver
@@ -15,6 +18,7 @@ The application that listens to the sent signal.
     </intent-filter>
 </receiver>
 ```
+
 ### BroadcastReceiver class that listens for the incoming signal.
 ```kotlin
 class SignalBroadcast : BroadcastReceiver() {
@@ -23,8 +27,10 @@ class SignalBroadcast : BroadcastReceiver() {
     }
 }
 ```
+
 ## Second App
 The application that sends the signal.
+
 ### Add permissions to access other app.
 ```xml
 <permission
@@ -32,6 +38,7 @@ The application that sends the signal.
     android:protectionLevel="signature">
 </permission>
 ```
+
 ### Send signal to other application.
 ```kotlin
 fun signal(view : View){
@@ -39,4 +46,3 @@ fun signal(view : View){
     sendBroadcast(intent,"application.permission")
 }
 ```
-
